@@ -1,0 +1,55 @@
+body
+  font-family: sans-serif
+  margin: 0
+  padding: 0
+  color: #b1b1b1
+  transform: rotate(7deg);
+
+// For demo only
+.row
+  display: block
+
+// Sass Grid
+$grid-total-columns: 12
+
+// Number of columns in grid
+$grid-gutter-width: 0px
+
+// Space between columns
+$grid-margin-width: 0px
+
+// Outer spacing on grid
+
+=container
+  margin-left: -$grid-gutter-width
+  padding-left: $grid-margin-width
+  padding-right: $grid-margin-width
+
+=grid-columns($grid-column-span, $grid-total-columns)
+  width: percentage($grid-column-span / $grid-total-columns)
+
+$class-grid-row: "row"
+$class-grid-column: "col-"
+$class-push: "push"
+
+=generate_grid_classes
+  .#{$class-grid-row}
+    +container
+  [class*="#{$class-grid-column}"]
+    position: relative
+    min-height: 1px
+    box-sizing: border-box
+    padding-left: $grid-gutter-width
+    display: inline-block
+    vertical-align: top
+    font-size: 14px
+    border-bottom: 1px solid red
+    border-right: 1px solid red
+
+=generate_grid_column_classes
+  @for $i from 1 through $grid-total-columns
+    .#{$class-grid-column}#{$i}
+      +grid-columns($i, $grid-total-columns)
+
++generate_grid_classes
++generate_grid_column_classes
