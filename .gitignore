@@ -46,5 +46,6 @@ Temporary Items
 # My GitIgnore
 #==========
 
-bower_components/
-node_modules/
+bower_components/**
+node_modules/**
+.bin

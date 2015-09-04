@@ -22,7 +22,3 @@
 > Path to final build "www/_min/"
 
 	$ gulp
-	
-	
-	
-### This project is also a HelloWord github
