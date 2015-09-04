@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Cortes Jeremy and Gaudi Nicolas",
+  "author": "Cortes Jeremy and Gaudy Nicolas",
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.0",
