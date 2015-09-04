@@ -1,19 +1,29 @@
 var gulp = require('gulp'),
+  gutil = require('gulp-util'),
+
   coffee = require('gulp-coffee'),
   uglify = require('gulp-uglify'),
   concat = require('gulp-concat'),
+
   sass = require('gulp-sass'),
   prefix = require('gulp-autoprefixer'),
-  jade = require('gulp-jade'),
-  imagemin = require('gulp-imagemin'),
-  connect = require('gulp-connect');
+  minifyCss = require('gulp-minify-css'),
 
-//
+  jade = require('gulp-jade'),
+
+  imagemin = require('gulp-imagemin'),
+  connect = require('gulp-connect'),
+  plumber = require('gulp-plumber'),
+  sourcemaps = require('gulp-sourcemaps');
+
+// Prefix is not assured when livereload, only when run $ gulp
+// MinifyCss ( assured by sass ), Plumber, gutil, sourceMap not used
+
+// Path to lib and your js
 
 var modernizr = 'bower_components/modernizr/modernizr.js',
   classie = 'bower_components/classie/classie.js',
   velocity = 'bower_components/velocity/velocity.min.js',
-  three = 'bower_components/three.js/build/three.min.js',
   app = 'www/js/*.js';
 
 var lib = [modernizr, classie, app];
@@ -42,11 +52,10 @@ gulp.task('coffee', function () {
 });
 
 gulp.task('sass', function () {
-  gulp.src('www/css/*.sass')
+  gulp.src('www/css/app. {sass, scss}')
     .pipe(sass({
       outputStyle: 'uncompressed'
     }))
-    .pipe(prefix())
     .pipe(gulp.dest('www/css/'));
 
   gulp.src('www/css/*.css')
@@ -88,7 +97,7 @@ gulp.task('default', function () {
     }))
     .pipe(gulp.dest('www/_min/img/'));
 
-  gulp.src('www/css/*.sass')
+  gulp.src('www/css/app. {sass, scss}')
     .pipe(sass({
       outputStyle: 'compressed'
     }))
@@ -104,7 +113,7 @@ gulp.task('serve', ['connect', 'watch']);
 gulp.task('watch', function () {
 
   gulp.watch('www/js/*.coffee', ['coffee']);
-  gulp.watch('www/css/*.sass', ['sass']);
+  gulp.watch('www/css/app. {sass, scss}', ['sass']);
   gulp.watch('www/*.jade', ['jade']);
 
 });

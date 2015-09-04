@@ -1,12 +1,9 @@
 {
-  "name": "Faster-Starter ",
+  "name": "Faster-Starter",
   "version": "1.0.0",
   "description": "A pre-build starter with gulp and bower",
   "main": "index.js",
   "private": false,
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Cortes Jeremy and Gaudy Nicolas",
   "license": "MIT",
   "devDependencies": {
@@ -19,7 +16,12 @@
     "gulp-imagemin": "^2.3.0",
     "gulp-jade": "^1.1.0",
     "gulp-jshint": "^1.11.2",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-plumber": "^1.0.1",
     "gulp-sass": "^2.0.4",
-    "gulp-uglify": "^1.4.0"
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.4.0",
+    "gulp-util": "^3.0.6"
   }
 }
