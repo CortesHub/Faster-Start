@@ -49,3 +49,5 @@ Temporary Items
 bower_components/**
 node_modules/**
 .bin
+gulp
+node_modules/.bin/gulp
