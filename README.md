@@ -1,15 +1,16 @@
 # Faster-Start
-A starter to init website faster with gulp and bower
 
-# How to install ?
+> A starter to init website faster with gulp and bower
 
-$ npm install
-$ bower install
+## How to install ?
 
-# How to work ?
+	$ npm install  
+	$ bower install
 
-$ gulp serve
+## Livereload server
 
-# How to publish
+	$ gulp serve
 
-$ gulp
+## publish
+
+	$ gulp
