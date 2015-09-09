@@ -1,5 +1,6 @@
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 body {
   font-family: sans-serif;
@@ -8,17 +9,24 @@ body {
   font-size: 18px;
   text-align: center;
   color: #163155;
-  background: #4c98ff; }
+  background: #4c98ff;
+}
 
 h1 {
-  margin: 40px; }
+  margin: 40px;
+}
 
 #container {
-  color: #09418d; }
-  #container div {
-    display: flex; }
-    #container div .box {
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      -ms-border-radius: 10px;
-      border-radius: 10px; }
+  color: #cccccc;
+}
+
+#container div {
+  display: flex;
+}
+
+#container div .box {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}

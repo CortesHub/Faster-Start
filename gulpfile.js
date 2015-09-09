@@ -12,6 +12,7 @@ var gulp = require('gulp'),
   jade = require('gulp-jade'),
 
   gulpDeployFtp = require('gulp-deploy-ftp'),
+  zip = require('gulp-zip'),
 
   imagemin = require('gulp-imagemin'),
   connect = require('gulp-connect'),
@@ -35,19 +36,10 @@ var ftpOptions = {
   password: '',
   port: '',
   host: '',
-  uploadPath: ''
+  uploadPath: 'www/'
 };
 
-// Gulp Tasks
-
-gulp.task('connect', function () {
-  connect.server({
-    root: 'www/',
-    livereload: true
-  });
-});
-
-//
+// Gulp DOM Tasks
 
 gulp.task('coffee', function () {
   gulp.src('www/js/*.coffee')
@@ -89,10 +81,35 @@ gulp.task('jade', function () {
 // FTP
 
 gulp.task('ftp', function () {
-  
-  gulp.src('www/_min/**/*')
+  gulp.src('www/dist/*')
     .pipe(gulpDeployFtp(ftpOptions))
     .pipe(gulp.dest('www/ftp/'));
+});
+
+// Zip
+
+gulp.task('zip', function () {
+  gulp.src('www/dist/*')
+    .pipe(zip('Dist.zip'))
+    .pipe(gulp.dest('www/dist/'));
+});
+
+// Server
+
+gulp.task('connect', function () {
+  connect.server({
+    root: 'www/',
+    livereload: true
+  });
+});
+
+// Watcher
+
+gulp.task('watch', function () {
+
+  gulp.watch('www/js/*.coffee', ['coffee']);
+  gulp.watch('www/css/*.sass', ['sass']);
+  gulp.watch('www/*.jade', ['jade']);
 
 });
 
@@ -104,36 +121,26 @@ gulp.task('default', function () {
     .pipe(jade({
       pretty: false
     }))
-    .pipe(gulp.dest('www/_min/'));
+    .pipe(gulp.dest('www/dist/'));
 
   gulp.src(lib)
     .pipe(uglify())
     .pipe(concat('app.js'))
-    .pipe(gulp.dest('www/_min/js/'));
+    .pipe(gulp.dest('www/dist/js/'));
 
   gulp.src('www/img/*')
     .pipe(imagemin({
       progressive: true
     }))
-    .pipe(gulp.dest('www/_min/img/'));
+    .pipe(gulp.dest('www/dist/img/'));
 
-  gulp.src('www/css/app. {sass, scss}')
+  gulp.src('www/css/*.sass')
     .pipe(sass({
       outputStyle: 'compressed'
     }))
     .pipe(prefix())
-    .pipe(gulp.dest('www/_min/css/'));
+    .pipe(gulp.dest('www/dist/css/'));
 
 });
 
 gulp.task('serve', ['connect', 'watch']);
-
-// Watcher
-
-gulp.task('watch', function () {
-
-  gulp.watch('www/js/*.coffee', ['coffee']);
-  gulp.watch('www/css/*.sass', ['sass']);
-  gulp.watch('www/*.jade', ['jade']);
-
-});
