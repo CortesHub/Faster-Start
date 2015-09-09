@@ -11,6 +11,8 @@ var gulp = require('gulp'),
 
   jade = require('gulp-jade'),
 
+  gulpDeployFtp = require('gulp-deploy-ftp'),
+
   imagemin = require('gulp-imagemin'),
   connect = require('gulp-connect'),
   plumber = require('gulp-plumber'),
@@ -28,7 +30,15 @@ var modernizr = 'bower_components/modernizr/modernizr.js',
 
 var lib = [modernizr, classie, app];
 
-//
+var ftpOptions = {
+  user: '',
+  password: '',
+  port: '',
+  host: '',
+  uploadPath: ''
+};
+
+// Gulp Tasks
 
 gulp.task('connect', function () {
   connect.server({
@@ -52,7 +62,7 @@ gulp.task('coffee', function () {
 });
 
 gulp.task('sass', function () {
-  gulp.src('www/css/app. {sass, scss}')
+  gulp.src('www/css/*.sass')
     .pipe(sass({
       outputStyle: 'uncompressed'
     }))
@@ -76,7 +86,17 @@ gulp.task('jade', function () {
     .pipe(connect.reload());
 });
 
-//
+// FTP
+
+gulp.task('ftp', function () {
+  
+  gulp.src('www/_min/**/*')
+    .pipe(gulpDeployFtp(ftpOptions))
+    .pipe(gulp.dest('www/ftp/'));
+
+});
+
+// Dist
 
 gulp.task('default', function () {
 
@@ -113,7 +133,7 @@ gulp.task('serve', ['connect', 'watch']);
 gulp.task('watch', function () {
 
   gulp.watch('www/js/*.coffee', ['coffee']);
-  gulp.watch('www/css/app. {sass, scss}', ['sass']);
+  gulp.watch('www/css/*.sass', ['sass']);
   gulp.watch('www/*.jade', ['jade']);
 
 });

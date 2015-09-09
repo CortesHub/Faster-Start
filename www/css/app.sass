@@ -1,8 +1,22 @@
+// Mixins
+
+=border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius:    $radius
+  -ms-border-radius:     $radius
+  border-radius:         $radius
+
+// Variables
+
 $color-principale: #4c98ff
 $color-secondaire: #09418d
 $color-terciaire: #163155
 
-//
+// Reset CSS
+
+  //@import reset
+
+// app
 
 *
   box-sizing: border-box
@@ -20,8 +34,11 @@ h1
   margin: 40px
 
 #container
-  @extend h1
   color: $color-secondaire
   
-div
-  display: flex
+  div
+    display: flex
+    
+    .box
+      +border-radius(10px)
+      

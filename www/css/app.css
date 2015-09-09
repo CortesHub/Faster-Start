@@ -10,8 +10,15 @@ body {
   color: #163155;
   background: #4c98ff; }
 
-h1, #container {
+h1 {
   margin: 40px; }
 
 #container {
   color: #09418d; }
+  #container div {
+    display: flex; }
+    #container div .box {
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      border-radius: 10px; }

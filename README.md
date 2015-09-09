@@ -1,8 +1,8 @@
 # Faster-Start
 
-> A starter to init website faster with gulp and bower
-> CoffeeScript, Sass, Jade compiler ready
-> Velocity, Classie, Modernizr lib ready
+> A starter to init website faster with gulp and bower  
+> CoffeeScript, Sass, Jade compiler ready  
+> Velocity, Classie, Modernizr lib ready  
 
 ## How to start ?
 
