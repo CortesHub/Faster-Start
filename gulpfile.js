@@ -9,9 +9,7 @@ var gulp = require('gulp'),
   prefix = require('gulp-autoprefixer'),
   minifyCss = require('gulp-minify-css'),
 
-  jade = require('gulp-jade'),////////////////////////////////////////////////////////
-    //  yolo putain//
-  ////////////////////////////////////////////////////////
+  jade = require('gulp-jade'),
 
   gulpDeployFtp = require('gulp-deploy-ftp'),
   zip = require('gulp-zip'),
