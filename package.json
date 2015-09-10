@@ -1,6 +1,6 @@
 {
   "name": "Faster-Starter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A pre-build starter with gulp and bower",
   "main": "index.js",
   "private": false,
