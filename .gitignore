@@ -52,3 +52,5 @@ node_modules/**
 gulp
 node_modules/.bin/gulp
 node_modules/.bin/gulp
+MotDePasse.txt
+npm-debug.log
