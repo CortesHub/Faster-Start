@@ -13,12 +13,20 @@
 
 ## Livereload server
 
-> you have a ready livereload server to work immediately at **localhost:8080** just type :
+> you have a ready livereload server to work immediately at **localhost:8080** just type :  
 
-	$ gulp serve
+  $ gulp serve
+
+## Make a distrib .ZIP  
+
+  $ gulp zip
 
 ## Final build 
 
-> Path to final build "www/_min/"
+> Path to final build "www/_min/"  
 
 	$ gulp
+  
+## deploy with ftp
+
+  $ gulp ftp

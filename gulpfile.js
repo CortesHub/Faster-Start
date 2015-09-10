@@ -11,16 +11,27 @@ var gulp = require('gulp'),
 
   jade = require('gulp-jade'),
 
-  gulpDeployFtp = require('gulp-deploy-ftp'),
+  ftp = require('vinyl-ftp'),
   zip = require('gulp-zip'),
 
   imagemin = require('gulp-imagemin'),
+
   connect = require('gulp-connect'),
   plumber = require('gulp-plumber'),
   sourcemaps = require('gulp-sourcemaps');
 
 // Prefix is not assured when livereload, only when run $ gulp
 // MinifyCss ( assured by sass ), Plumber, gutil, sourceMap not used
+
+// FTP Deploy
+
+var conn = ftp.create({
+  host: '',
+  user: '',
+  password: '',
+  port: 21,
+  log: gutil.log
+});
 
 // Path to lib and your js
 
@@ -30,14 +41,6 @@ var modernizr = 'bower_components/modernizr/modernizr.js',
   app = 'www/js/*.js';
 
 var lib = [modernizr, classie, app];
-
-var ftpOptions = {
-  user: '',
-  password: '',
-  port: '',
-  host: '',
-  uploadPath: 'www/'
-};
 
 // Gulp DOM Tasks
 
@@ -80,18 +83,13 @@ gulp.task('jade', function () {
 
 // FTP
 
-gulp.task('ftp', function () {
-  gulp.src('www/dist/*')
-    .pipe(gulpDeployFtp(ftpOptions))
-    .pipe(gulp.dest('www/ftp/'));
-});
 
 // Zip
 
 gulp.task('zip', function () {
   gulp.src('www/dist/*')
-    .pipe(zip('Dist.zip'))
-    .pipe(gulp.dest('www/dist/'));
+    .pipe(zip('Distribution.zip'))
+    .pipe(gulp.dest('www/compress/'));
 });
 
 // Server
@@ -144,3 +142,28 @@ gulp.task('default', function () {
 });
 
 gulp.task('serve', ['connect', 'watch']);
+
+// ftp
+
+gulp.task('deploy', function () {
+
+  var globsZip = [
+        'www/compress/Distribution.zip'
+    ];
+  var globs = [
+        'www/css/**',
+        'www/js/**',
+        'www/index.html'
+    ];
+
+  // using base = '.' will transfer everything to /public_html correctly
+  // turn off buffering in gulp.src for best performance
+
+  gulp.src(globs, {
+      base: 'www/',
+      buffer: false
+    })
+    .pipe(conn.newer('/www/ftpTest')) // only upload newer files
+    .pipe(conn.dest('/www/ftpTest'));
+
+});
