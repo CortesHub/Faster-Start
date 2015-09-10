@@ -4,14 +4,14 @@
 > CoffeeScript, Sass, Jade compiler ready  
 > Velocity, Classie, Modernizr lib ready  
 
-## How to start ?
+## How to start ?  
 
-> Download, extract check bower.json and remove dependencies you dont want and type :
+> Download, extract check bower.json and remove dependencies you dont want and type :  
 
 	$ npm install  
 	$ bower install
 
-## Livereload server
+## Livereload server  
 
 > you have a ready livereload server to work immediately at **localhost:8080** just type :  
 
@@ -19,14 +19,16 @@
 
 ## Make a distrib .ZIP  
 
+> Path to zip "www/compress/distribution.zip"  
+
   $ gulp zip
 
-## Final build 
+## Final build  
 
-> Path to final build "www/_min/"  
+> Path to final build "www/dist/"  
 
-	$ gulp
+  $ gulp
   
-## deploy with ftp
+## deploy with ftp  
 
   $ gulp ftp
