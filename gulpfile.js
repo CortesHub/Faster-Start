@@ -35,6 +35,8 @@ var conn = ftp.create({
 
 // Path to lib and your js
 
+// 
+
 var modernizr = 'bower_components/modernizr/modernizr.js',
   classie = 'bower_components/classie/classie.js',
   velocity = 'bower_components/velocity/velocity.min.js',
