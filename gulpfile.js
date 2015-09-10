@@ -22,7 +22,7 @@ var gulp = require('gulp'),
 // Prefix is not assured when livereload, only when run $ gulp
 // MinifyCss ( assured by sass ), Plumber, gutil, sourceMap not used
 
-// Path to lib and your js
+// 
 
 var modernizr = 'bower_components/modernizr/modernizr.js',
   classie = 'bower_components/classie/classie.js',
