@@ -15,20 +15,20 @@
 
 > you have a ready livereload server to work immediately at **localhost:8080** just type :  
 
-  $ gulp serve
+    $ gulp serve
 
 ## Make a distrib .ZIP  
 
 > Path to zip "www/compress/distribution.zip"  
 
-  $ gulp zip
+    $ gulp zip
 
 ## Final build  
 
 > Path to final build "www/dist/"  
 
-  $ gulp
+    $ gulp
   
 ## deploy with ftp  
 
-  $ gulp ftp
+    $ gulp ftp
